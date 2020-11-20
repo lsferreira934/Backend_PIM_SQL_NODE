@@ -11,8 +11,8 @@ router.post('/newuser', Blockchain_User.Insert);
 //Routes about Capmoney
 router.post('/newClient', Capmoney_Client.Insert);
 router.get('/clients', Capmoney_Client.Show);
-
-
+router.post('/searchclient', Capmoney_Client.Index);
+router.post('/veriry', Capmoney_Client.Verication);
 
 
 
