@@ -41,7 +41,7 @@ const Blockchain_User = sequelize.define(
       type: Sequelize.STRING(100),
       allowNull: false,
     },
-    adress: {
+    address: {
       type: Sequelize.STRING(200),
       allowNull: false,
     },
@@ -58,6 +58,7 @@ const Blockchain_User = sequelize.define(
     balance: {
       type: Sequelize.FLOAT(8, 2),
       allowNull: true,
+      defaultValue: 0
     },
   },
   {

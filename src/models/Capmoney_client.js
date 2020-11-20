@@ -41,7 +41,7 @@ const Capmoney_client = sequelize.define(
       type: Sequelize.STRING(100),
       allowNull: false,
     },
-    adress: {
+    address: {
       type: Sequelize.STRING(200),
       allowNull: false,
     },
@@ -68,9 +68,3 @@ const Capmoney_client = sequelize.define(
 );
 
 module.exports = Capmoney_client;
-
-// const Pedido = require('./pedido');
-// Cliente.hasMany(Pedido, {
-//   foreignKey: 'id_cliente',
-//   as: 'pedidos',
-// });
