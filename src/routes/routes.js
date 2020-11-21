@@ -20,5 +20,6 @@ router.post('/verify', Capmoney_Client.Verication);
 router.post('/newemployee', Capmoney_Employee.Insert);
 
 
-
+//teste
+router.post('/test', Capmoney_Client.Test);
 module.exports = router;

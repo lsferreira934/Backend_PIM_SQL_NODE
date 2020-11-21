@@ -6,7 +6,7 @@ const sequelize = require('./src/database/database');
 const app = express();
 const routes = require('./src/routes/routes.js');
 const cors = require('cors');
-
+const moment = require('moment');
 // enable JSON
 app.use(express.json());
 
@@ -17,6 +17,9 @@ app.use(cors());
 app.get('/api', function (req, res, next) {
   res.json({ msg: 'This is CORS-enabled for all origins!' });
 });
+
+
+
 
 app.get('/', function (req, res, next) {
   res.json({
