@@ -2,69 +2,67 @@
 const Sequelize = require('sequelize');
 const sequelize = require('../database/database');
 
-
-// criando a table 'Blockchain.User'
-const Capmoney_client = sequelize.define(
-  'capmoney_client',
+// criando a table 'pedido'
+const Capmoney_employee = sequelize.define(
+  'capmoney_employee',
   {
-    id: {
+    id:
+    {
       type: Sequelize.INTEGER,
       allowNull: false,
       autoIncrement: true,
       primaryKey: true,
     },
-    name: {
+    name:
+    {
       type: Sequelize.STRING(50),
       allowNull: false,
     },
-    cpf: {
+    cpf:
+    {
       type: Sequelize.STRING(15),
       allowNull: false,
       unique: true,
     },
-    bornAt: {
+    bornAt:
+    {
       type: Sequelize.DATEONLY,
       allowNull: false,
     },
-    email: {
+    email:
+    {
       type: Sequelize.STRING(50),
       allowNull: false,
       validate: {
         isEmail: true,
       },
     },
-    phone: {
+    phone:
+    {
       type: Sequelize.STRING(15),
       allowNull: false,
     },
-    password: {
+    password:
+    {
       type: Sequelize.STRING(100),
       allowNull: false,
     },
-    address: {
+    address:
+    {
       type: Sequelize.STRING(200),
       allowNull: false,
     },
-    category: {
-      type: Sequelize.ENUM('C'),
+    category:
+    {
+      type: Sequelize.ENUM('G', 'A'),
+      defaultValue: 'A',
       allowNull: false,
-      defaultValue: 'C',
-    },
-    agency: {
-      type: Sequelize.STRING(30),
-      allowNull: true,
-      defaultValue: 'Individual',
-    },
-    account: {
-      type: Sequelize.STRING(5),
-      allowNull: true,
-      defaultValue: 'N/P',
-    },
-
+    }
   },
   {
     freezeTableName: true,
   }
 );
 
-module.exports = Capmoney_client;
+module.exports = Capmoney_employee;
+

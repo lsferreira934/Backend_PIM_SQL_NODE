@@ -16,5 +16,4 @@ const sequelize = new Sequelize(
     }
 );
 
-console.log("DB running");
 module.exports = sequelize;

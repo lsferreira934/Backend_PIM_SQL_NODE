@@ -68,8 +68,3 @@ const Blockchain_User = sequelize.define(
 
 module.exports = Blockchain_User;
 
-// const Pedido = require('./pedido');
-// Cliente.hasMany(Pedido, {
-//   foreignKey: 'id_cliente',
-//   as: 'pedidos',
-// });

@@ -4,7 +4,7 @@ const Blockchain_User = require('../models/Blockchain_user');
 const status = require('http-status');
 const { NOT_FOUND } = require('http-status');
 
-// New Client
+// New Client - FOR TESTS
 exports.Insert = async (req, res) => {
     try {
         const newClient = await Capmoney_Client.create(req.body);
@@ -40,7 +40,20 @@ exports.Index = async (req, res) => {
     }
 };
 
-// Insert with verification
-exports.Verication = (req, res) => {
-    return res.json(req.body.cpf);
+// Insert with verification - FOR PRODUCTION
+exports.Verication = async (req, res) => {
+    try {
+        const { cpf } = req.body;
+        const verifyClient = await Blockchain_User.findOne({ where: { cpf: cpf } });
+
+        if (!verifyClient) {
+            res.status(400).json(`CPF ${cpf} não encontrado na base de dados Blockchain. Por favor, verifique com sua empresa de Blockchain`);
+        } else {
+            const addedClient = await Capmoney_Client.create(req.body);
+            res.json(addedClient);
+        }
+
+    } catch (error) {
+        res.status(400).json({ error: error.message });
+    }
 }; 

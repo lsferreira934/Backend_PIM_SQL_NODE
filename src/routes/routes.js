@@ -3,17 +3,21 @@ const express = require('express');
 const router = express.Router();
 const Blockchain_User = require('../controllers/Blockchain_userController');
 const Capmoney_Client = require('../controllers/Capmoney_clientController')
+const Capmoney_Employee = require('../controllers/Capmoney_employeeController');
+
 
 
 
 router.post('/newuser', Blockchain_User.Insert);
 
-//Routes about Capmoney
+//Routes about Capmoney Clients
 router.post('/newClient', Capmoney_Client.Insert);
 router.get('/clients', Capmoney_Client.Show);
 router.post('/searchclient', Capmoney_Client.Index);
-router.post('/veriry', Capmoney_Client.Verication);
+router.post('/verify', Capmoney_Client.Verication);
 
+// Routes about Capmoney Employees
+router.post('/newemployee', Capmoney_Employee.Insert);
 
 
 
