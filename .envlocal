@@ -1,0 +1,7 @@
+# Banco de Dados
+DB_HOST=localhost
+DB_PORT=3306
+DB_NAME=db_pim
+DB_DIALECT=mysql
+DB_USER=root
+DB_PASSWORD=root
