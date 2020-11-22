@@ -24,7 +24,7 @@ app.get('/api', function (req, res, next) {
 app.get('/', function (req, res, next) {
   res.json({
     Bem_Vindo: 'BEM VINDO A API BLOCKCHAIN/CAPMONEY - PIM UNIP',
-    Link_frontend: 'https://tpfrontendunip.herokuapp.com/',
+    Link_frontend: '',
     Link_gitHub:
       'https://github.com/lsferreira934/Backend_PIM_SQL_NODE',
 
