@@ -5,12 +5,15 @@ const Blockchain_User = require('../controllers/Blockchain_userController');
 const Blockchain_Extract = require('../controllers/Blockchain_extractController');
 const Capmoney_Client = require('../controllers/Capmoney_clientController')
 const Capmoney_Employee = require('../controllers/Capmoney_employeeController');
+const Blockchain_extract = require('../controllers/Blockchain_extractController');
 
 
 
 
 
+// routes about Blockchain
 router.post('/newuser', Blockchain_User.Insert);
+router.post('/extract', Blockchain_extract.Extract);
 
 
 //Routes about Capmoney Clients

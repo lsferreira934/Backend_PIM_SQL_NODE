@@ -1,15 +1,17 @@
--- PROCEDURE OF EXTRACT ('saldo' and 'depósito') in Blockchain
+-- PROCEDURE OF EXTRACT ('saldo' and 'depósito') in Blockchain Blockchain_extract
 use db_pim;
 show tables;
 desc blockchain_extract;
 
 START TRANSACTION;
+
+DROP PROCEDURE IF EXISTS sp_put_take_money;
 DELIMITER $$
 CREATE PROCEDURE sp_put_take_money
 (
 	IN p_action CHAR(1)
-   ,IN p_toCPF varchar(15)  -- @paraCPF CHAR(15) OUTPUT
-  ,IN p_value DECIMAL(8,2)  -- @valor   DECIMAL(8,2) OUTPUT
+   ,INOUT p_toCPF varchar(15) 
+  ,IN p_value DECIMAL(8,2)  
 )
 BEGIN
 	-- getting primarykey
@@ -17,44 +19,42 @@ BEGIN
 	SELECT id from BLOCKCHAIN_USER where cpf = p_toCPF into v_user;
     
 	IF p_action = UPPER('d')  THEN
-		-- efetuar depósito
+		-- efetuar depósito (put)
 			UPDATE blockchain_user
 				SET balance = balance + p_value
 			WHERE cpf = p_toCPF;
-            
+            -- creating log
             INSERT INTO blockchain_extract values
 				(default,'depósito', p_value, v_user, now(), now() );
             
 			-- SELECT CONCAT('Depósito de: R$ ', p_value , ' realizado com sucesso para o CPF: ' , p_toCPF );
-             SELECT CONCAT('Depósito de: R$  realizado com sucesso' );
+             SELECT CONCAT('Depósito para CPF:' , p_toCPF , '  realizado com sucesso' ) as 'Success';
 
 	ELSEIF p_action = UPPER('s') THEN
 			-- verificando se a quantidade é maior que o valor atual do saldo
 				IF p_value > (select balance from blockchain_user WHERE cpf = p_toCPF) THEN
 					SELECT 'O valor solicitado para saque é maior que o valor do saldo atual,
-							entre com um  valor menor para efetuar o saque.';
+							entre com um  valor menor para efetuar o saque.' as 'WARNING';
 				ELSE
 					-- efetuar saque
 					UPDATE blockchain_user
 						SET balance = balance - p_value
 					WHERE cpf = p_toCPF;
-                    
+                    -- creating log
                     INSERT INTO blockchain_extract values
 					 	(default,'saque', p_value, v_user, now(), now() );
                 
 				-- SELECT CONCAT('Saque de: R$ ', p_value , ' realizado com sucesso para o CPF: ' ,  p_toCPF );
-                SELECT CONCAT('Saque  realizado com sucesso para o CPF: ' );
+                SELECT CONCAT('Saque realizado com sucesso para o CPF: ', p_toCPF );
                 END IF;
 		
 	 ELSE
 		 IF p_action NOT IN ( UPPER('D'),UPPER('S') ) THEN
 			
-				SELECT 'Opção inválida, entre com "D" para DEPÓSITO ou "S" para SAQUE.';
+				SELECT 'Opção inválida, entre com "D" para DEPÓSITO ou "S" para SAQUE.' as 'WARNING';
 			END IF;
     END IF;
-		/* SELECT CONCAT ('Oops, parece que um erro ocorreu: ', ERROR_NUMBER() , ' ' , ERROR_PROCEDURE() , ' ' , ERROR_LINE() , ' ', ERROR_MESSAGE(),
-						' contate o suporte do sistema e informa as mensagens apresentadas'); */
-	
+		
 END ;
 END $$
 DELIMITER ; 
@@ -75,3 +75,6 @@ select * from blockchain_user;
     select * from blockchain_extract;
 ROLLBACK;
 COMMIT;
+
+-- Test this way: call sp_put_take_money ('d' OU 's', 'CPF', valorMoney);
+
