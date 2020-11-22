@@ -14,9 +14,9 @@ exports.Extract = async (req, res) => {
             return res.status(400).json({ error: `CPF não encontrado ou não há extratos disponíveis` });
         }
 
-        const [responseExtract] = await sequelize.query(`SELECT * FROM vw_users_extract WHERE cpf = ${searchCPF}`);
+        const [responseSearch] = await sequelize.query(`select * from vw_users_extract WHERE cpf = ${searchCPF}`);
 
-        res.json(responseExtract);
+        res.json(responseSearch);
 
     } catch (error) {
         res.status(400).json({ error: error.message });
@@ -27,7 +27,7 @@ exports.Extract = async (req, res) => {
 exports.AllExtracts = async (req, res) => {
     try {
 
-        const [responseExtract] = await sequelize.query(`SELECT * FROM vw_users_extract`);
+        const [responseExtract] = await sequelize.query(`select * from vw_users_extract`);
 
         res.json(responseExtract);
 
