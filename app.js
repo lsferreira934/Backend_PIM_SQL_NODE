@@ -32,7 +32,7 @@ app.get('/', function (req, res, next) {
       ROUTES_BLOCKCHAIN: {
         get: 'https://backendpim.herokuapp.com/api/allusers',
         post: 'https://tpbackendunip.herokuapp.com/api/extract',
-        post: 'https://tpbackendunip.herokuapp.com/api/allextracts',
+        get: 'https://tpbackendunip.herokuapp.com/api/allextracts',
 
       },
       ROUTES_CAPMONEY_CLIENTS: {
@@ -44,6 +44,7 @@ app.get('/', function (req, res, next) {
       },
       ROUTES_CAPMONEY_EMPLOYEES: {
         post: 'https://backendpim.herokuapp.com/api/newemployee',
+        get: 'https://backendpim.herokuapp.com/api/allemployees',
 
       },
     },

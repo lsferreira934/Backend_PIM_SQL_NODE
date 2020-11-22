@@ -11,3 +11,13 @@ exports.Insert = async (req, res) => {
         res.status(400).json({ error: error.message });
     }
 };
+
+// Show All
+exports.Show = async (req, res) => {
+    try {
+        const AllEmployees = await Capmoney_employee.FindAll();
+        res.json(AllEmployees);
+    } catch (error) {
+        res.status(400).json({ error: error.message });
+    }
+};

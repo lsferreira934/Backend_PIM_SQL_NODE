@@ -25,6 +25,7 @@ router.post('/newClient', Capmoney_Client.Insert);
 
 // Routes about Capmoney Employees
 router.post('/newemployee', Capmoney_Employee.Insert);
+router.get('/allemployees', Capmoney_Employee.Show);
 
 
 module.exports = router;
