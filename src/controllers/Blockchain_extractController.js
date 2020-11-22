@@ -27,7 +27,7 @@ exports.Extract = async (req, res) => {
 exports.AllExtracts = async (req, res) => {
     try {
 
-        const [responseExtract] = await sequelize.query(`SELECT * FROM vw_users_extract WHERE cpf = ${searchCPF}`);
+        const [responseExtract] = await sequelize.query(`SELECT * FROM vw_users_extract`);
 
         res.json(responseExtract);
 
