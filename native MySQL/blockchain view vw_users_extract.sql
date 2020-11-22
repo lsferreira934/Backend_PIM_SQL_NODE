@@ -9,5 +9,7 @@ AS
         E.value as 'Value',
         E.updatedAt as 'Datetime'
     FROM blockchain_extract as E JOIN blockchain_user as U
-        ON E.fk_user = U.id
-    WHERE cpf = ?;
+        ON E.fk_user = U.id;
+
+select *
+from vw_users_extract;
