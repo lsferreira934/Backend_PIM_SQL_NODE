@@ -12,7 +12,7 @@ const Capmoney_Employee = require('../controllers/Capmoney_employeeController');
 // routes about Blockchain
 router.get('/allusers', Blockchain_User.Show);
 router.post('/extract', Blockchain_Extract.Extract);
-router.get('/extract', Blockchain_Extract.AllExtracts);
+router.get('/allextracts', Blockchain_Extract.AllExtracts);
 
 
 //Routes about Capmoney Clients
