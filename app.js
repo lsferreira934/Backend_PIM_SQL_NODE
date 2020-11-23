@@ -19,8 +19,6 @@ app.get('/api', function (req, res, next) {
 });
 
 
-
-
 app.get('/', function (req, res, next) {
   res.json({
     Bem_Vindo: 'BEM VINDO A API BLOCKCHAIN/CAPMONEY - PIM UNIP',
