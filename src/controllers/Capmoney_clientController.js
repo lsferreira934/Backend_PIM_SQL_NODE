@@ -68,9 +68,14 @@ exports.Index = async (req, res) => {
 exports.Login = async (req, res) => {
   const { cpf, password } = req.body;
 
-  const user = await Capmoney_Client.findOne({ cpf });
+  const user = await Capmoney_Client.findOne({ where: { cpf: cpf } });
+
   if (!user) {
     return res.status(400).send({ error: 'User not Found' });
+  }
+
+  if (user.cpf !== cpf) {
+    return res.status(400).send({ error: 'Invalid CPF' });
   }
 
   if (user.password !== password) {
