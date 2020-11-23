@@ -33,7 +33,6 @@ app.get('/', function (req, res, next) {
         get: 'https://backendpim.herokuapp.com/api/allusers',
         post: 'https://tpbackendunip.herokuapp.com/api/extract',
         get: 'https://tpbackendunip.herokuapp.com/api/allextracts',
-
       },
       ROUTES_CAPMONEY_CLIENTS: {
         post: 'https://backendpim.herokuapp.com/api/verifyclient',

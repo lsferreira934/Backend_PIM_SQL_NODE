@@ -114,3 +114,7 @@ COMMIT;
 
 -- Test this way: call sp_put_take_money ('d' OU 's', 'CPF', valorMoney);
 
+call sp_put_take_money
+('s','85822415008',52); -- Yuri França CPF: 85822415008
+call sp_put_take_money
+('d','85822415008',213); -- Yuri França CPF: 85822415008
