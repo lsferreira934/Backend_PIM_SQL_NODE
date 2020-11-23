@@ -70,10 +70,6 @@ exports.Login = async (req, res) => {
 
   const user = await Capmoney_Client.findOne({ where: { cpf: cpf } });
 
-  if (!user) {
-    return res.status(400).send({ error: 'User not Found' });
-  }
-
   if (user.cpf !== cpf) {
     return res.status(400).send({ error: 'Invalid CPF' });
   }
