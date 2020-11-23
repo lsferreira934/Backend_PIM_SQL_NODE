@@ -1,7 +1,5 @@
 const Capmoney_Client = require('../models/Capmoney_client');
 const Blockchain_User = require('../models/Blockchain_user');
-const status = require('http-status');
-const { NOT_FOUND } = require('http-status');
 
 // New Client with verification - FOR PRODUCTION
 exports.Verication = async (req, res) => {
@@ -66,23 +64,23 @@ exports.Index = async (req, res) => {
 
 //authenticate
 exports.Login = async (req, res) => {
-  const { cpf, password } = req.body;
+  try {
+    const { cpf, password } = req.body;
 
-  const user = await Capmoney_Client.findOne({ where: { cpf: cpf } });
+    const user = await Capmoney_Client.findOne({ where: { cpf } });
 
-  if (!user) {
-    return res.status(400).send({ error: 'User not Found' });
+    if (cpf) {
+      res.status(400).send({ error: 'Invalid CPF ' });
+    }
+
+    // if (user.password !== password) {
+    //   res.status(400).send({ error: 'Invalid password' });
+    // }
+
+    // user.password = undefined;
+
+    // res.json({ user });
+  } catch (error) {
+    res.status(400).send({ error: 'Invalid ' });
   }
-
-  if (user.cpf !== cpf) {
-    return res.status(400).send({ error: 'Invalid CPF' });
-  }
-
-  if (user.password !== password) {
-    return res.status(400).send({ error: 'Invalid password' });
-  }
-
-  user.password = undefined;
-
-  res.json({ user });
 };
