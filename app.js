@@ -6,7 +6,7 @@ const sequelize = require('./src/database/database');
 const app = express();
 const routes = require('./src/routes/routes.js');
 const cors = require('cors');
-const moment = require('moment');
+
 // enable JSON
 app.use(express.json());
 
@@ -29,8 +29,10 @@ app.get('/', function (req, res, next) {
     Todas_as_rotas_dispoiveis: {
       ROUTES_BLOCKCHAIN: {
         get: 'https://backendpim.herokuapp.com/api/allusers',
-        post: 'https://tpbackendunip.herokuapp.com/api/extract',
-        get: 'https://tpbackendunip.herokuapp.com/api/allextracts',
+        post: 'https://backendpim.herokuapp.com/api/extract',
+        get: 'https://backendpim.herokuapp.com/api/allextracts',
+        get: 'https://backendpim.herokuapp.com/api/alltransactions',
+        post: 'https://backendpim.herokuapp.com/api/searchtransaction',
       },
       ROUTES_CAPMONEY_CLIENTS: {
         post: 'https://backendpim.herokuapp.com/api/verifyclient',
