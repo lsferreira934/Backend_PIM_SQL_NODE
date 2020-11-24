@@ -30,6 +30,6 @@ router.post('/newClient', Capmoney_Client.Insert);
 // Routes about Capmoney Employees
 router.post('/newemployee', Capmoney_Employee.Insert);
 router.get('/allemployees', Capmoney_Employee.Show);
-router.post('/authenticate', Capmoney_Employee.Login);
+router.post('/authenticateemployee', Capmoney_Employee.Login);
 
 module.exports = router;
