@@ -67,19 +67,19 @@ exports.Login = async (req, res) => {
   try {
     const { cpf, password } = req.body;
 
-    const user = await Capmoney_Client.findOne({ where: { cpf: cpf } });
+    const cliente = await Capmoney_Client.findOne({ where: { cpf: cpf } });
 
-    if (!user) {
+    if (!cliente) {
       res.status(401).json({ error: 'Invalid CPF' });
     }
 
-    if (user.password !== password) {
+    if (cliente.password !== password) {
       res.status(401).json({ error: 'Invalid password' });
     }
 
     user.password = undefined;
 
-    res.json({ user });
+    res.json({ cliente });
   } catch (error) {
     res.status(400).json({ error: error.message });
   }

@@ -14,7 +14,10 @@ router.get('/allusers', Blockchain_User.Show);
 router.post('/extract', Blockchain_Extract.Extract);
 router.get('/allextracts', Blockchain_Extract.AllExtracts);
 router.get('/alltransactions', Blockchain_registerTransaction.AllTransactions);
-router.post('/searchtransaction', Blockchain_registerTransaction.SearchTransaction);
+router.post(
+  '/searchtransaction',
+  Blockchain_registerTransaction.SearchTransaction
+);
 
 //Routes about Capmoney Clients
 router.post('/verifyclient', Capmoney_Client.Verication);
@@ -27,5 +30,6 @@ router.post('/newClient', Capmoney_Client.Insert);
 // Routes about Capmoney Employees
 router.post('/newemployee', Capmoney_Employee.Insert);
 router.get('/allemployees', Capmoney_Employee.Show);
+router.post('/authenticate', Capmoney_Employee.Login);
 
 module.exports = router;
