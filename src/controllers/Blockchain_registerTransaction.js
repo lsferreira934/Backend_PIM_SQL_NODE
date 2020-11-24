@@ -1,8 +1,9 @@
 const Blockchain_registerTransaction = require('../models/Blockchain_registerTransaction');
+const { Op } = require('sequelize');
 const status = require('http-status');
 const { NOT_FOUND } = require('http-status');
 
-// new employee
+// all transaction
 exports.AllTransactions = async (req, res) => {
     try {
         const allTransactions = await Blockchain_registerTransaction.findAll();
@@ -12,10 +13,16 @@ exports.AllTransactions = async (req, res) => {
     }
 };
 
+// search transaction by CPF (from and destiny)
 exports.SearchTransaction = async (req, res) => {
     try {
         const search = req.body.cpf;
-        const responseTransaction = await Blockchain_registerTransaction.findAll({ where: { cpf_origin: search } });
+        const responseTransaction = await Blockchain_registerTransaction.findAll({
+            where:
+            {
+                [Op.or]: [{ cpf_origin: search }, { cpf_destiny: search }]
+            }
+        });
 
         res.send(responseTransaction);
     } catch (error) {

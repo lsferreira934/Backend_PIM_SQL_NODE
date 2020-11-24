@@ -17,7 +17,8 @@ call sp_transfer('Sabrina Monteiro','45021705008','Clear',217,'Juliana Paes','76
 call sp_transfer('Moisés Costa','91956772081','Individual',90,'Roberta Schmidt','10070094039');
 call sp_transfer('Leandro Ferreira','45998111060','EasyInvest',16,'Yuri França','85822415008');
 call sp_transfer('Leandro Ferreira','45998111060','EasyInvest',16,'Sabrina Monteiro','45021705008');
+call sp_transfer('Moisés Costa','91956772081','Individual',100,'Leandro Ferreira','45998111060');
 
 
-
-select * from blockchain_registerTransaction;
+-- test
+select * from blockchain_registerTransaction where cpf_origin = '45998111060' OR cpf_destiny = '45998111060';

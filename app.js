@@ -10,14 +10,18 @@ const cors = require('cors');
 // enable JSON
 app.use(express.json());
 
+// setting group's routes
+app.use('/api', routes);
+
 // Adding cors (to use API's)
 app.use(cors());
+
+
 
 //
 app.get('/api', function (req, res, next) {
   res.json({ msg: 'This is CORS-enabled for all origins!' });
 });
-
 
 app.get('/', function (req, res, next) {
   res.json({
@@ -28,11 +32,16 @@ app.get('/', function (req, res, next) {
 
     Todas_as_rotas_dispoiveis: {
       ROUTES_BLOCKCHAIN: {
-        get: 'https://backendpim.herokuapp.com/api/allusers',
+        nota_1: 'Retorna todos usuários',
+        get_: 'https://backendpim.herokuapp.com/api/allusers',
+        nota_2: 'Consultar extrato - por CPF',
         post: 'https://backendpim.herokuapp.com/api/extract',
-        get: 'https://backendpim.herokuapp.com/api/allextracts',
+        nota_3: 'Retornar todos extratos',
+        _get: 'https://backendpim.herokuapp.com/api/allextracts',
+        nota_4: 'Retornar toda transações',
         get: 'https://backendpim.herokuapp.com/api/alltransactions',
-        post: 'https://backendpim.herokuapp.com/api/searchtransaction',
+        nota_5: 'Consultar transação de usuário - por CPF',
+        post_: 'https://backendpim.herokuapp.com/api/searchtransaction',
       },
       ROUTES_CAPMONEY_CLIENTS: {
         post: 'https://backendpim.herokuapp.com/api/verifyclient',
@@ -50,8 +59,8 @@ app.get('/', function (req, res, next) {
   });
 });
 
-// setting group's routes
-app.use('/api', routes);
+
+
 
 // Error's server, parser.json
 app.use((req, res, next) => {
