@@ -22,3 +22,15 @@ call sp_transfer('Moisés Costa','91956772081','Individual',100,'Leandro Ferreir
 
 -- test
 select * from blockchain_registerTransaction where cpf_origin = '45998111060' OR cpf_destiny = '45998111060';
+
+-- 24/11
+call sp_put_take_money
+('d','10070094039',220); -- Roberta Schmidt CPF: 10070094039
+call sp_put_take_money
+('d','45021705008',340); -- Sabrina Monteiro CPF: 45021705008
+call sp_put_take_money
+('d','91956772081',540); -- Moisés da Costa CPF: 91956772081
+call sp_put_take_money
+('s','10070094039',17); -- Roberta Schmidt CPF: 10070094039
+
+call sp_transfer('Moisés Costa','91956772081','Individual',140,'Tavares','60876307080');
