@@ -11,6 +11,7 @@ const Capmoney_Employee = require('../controllers/Capmoney_employeeController');
 
 // routes about Blockchain
 router.get('/allusers', Blockchain_User.Show);
+router.get('/oneuser', Blockchain_User.index);
 router.post('/extract', Blockchain_Extract.Extract);
 router.get('/allextracts', Blockchain_Extract.AllExtracts);
 router.get('/alltransactions', Blockchain_registerTransaction.AllTransactions);
