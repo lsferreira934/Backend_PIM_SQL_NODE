@@ -14,8 +14,8 @@ exports.Verication = async (req, res) => {
           `CPF ${cpf} não encontrado na base de dados Blockchain. Por favor, verifique com sua empresa de Blockchain`
         );
     } else {
-      const addedClient = await Capmoney_Client.create(req.body);
-      res.json(addedClient);
+      const newClient = await Capmoney_Client.create(req.body);
+      res.json({ client: newClient });
     }
   } catch (error) {
     res.status(400).json({ error: error.message });
