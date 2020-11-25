@@ -26,7 +26,7 @@ exports.Verication = async (req, res) => {
 exports.Insert = async (req, res) => {
   try {
     const newClient = await Capmoney_Client.create(req.body);
-    res.json(newClient);
+    res.json({ client: newClient });
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
