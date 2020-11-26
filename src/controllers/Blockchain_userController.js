@@ -11,7 +11,7 @@ exports.Show = async (req, res) => {
 };
 
 // one Blockchain Users
-exports.index = async (req, res) => {
+exports.Search = async (req, res) => {
   const cpf = req.body.cpf;
   try {
     const user = await Blockchain_User.findOne({ where: { cpf: cpf } });
