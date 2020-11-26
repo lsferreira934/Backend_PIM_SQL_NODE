@@ -84,3 +84,24 @@ exports.Login = async (req, res) => {
     res.status(400).json({ error: error.message });
   }
 };
+
+exports.Edit = async (req, res) => {
+  try {
+    const { name, cpf, bornAt, email, phone, address, password } = req.body;
+
+    const responseClient = await Capmoney_Client.findOne({
+      where: { cpf: cpf },
+    });
+
+    if (!responseClient) {
+      res
+        .status(400)
+        .json(`Desculpe, cliente com CPF ${cpf} não foi encontrado`);
+    }
+
+    await responseClient.update(req.body);
+    res.json({ client: responseClient });
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};

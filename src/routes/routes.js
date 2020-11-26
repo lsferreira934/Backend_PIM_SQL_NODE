@@ -24,6 +24,7 @@ router.post('/verifyclient', Capmoney_Client.Verication);
 router.get('/clients', Capmoney_Client.Show);
 router.post('/searchclient', Capmoney_Client.Index);
 router.post('/authenticate', Capmoney_Client.Login);
+router.put('/editclient', Capmoney_Client.Edit);
 // for tests
 router.post('/newClient', Capmoney_Client.Insert);
 
