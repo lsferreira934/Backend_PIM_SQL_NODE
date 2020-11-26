@@ -5,7 +5,6 @@ const router = express.Router();
 const Blockchain_User = require('../controllers/Blockchain_userController');
 const Blockchain_Extract = require('../controllers/Blockchain_extractController');
 const Blockchain_registerTransaction = require('../controllers/Blockchain_registerTransaction');
-
 const Capmoney_Client = require('../controllers/Capmoney_clientController');
 const Capmoney_Employee = require('../controllers/Capmoney_employeeController');
 
