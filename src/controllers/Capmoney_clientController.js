@@ -56,7 +56,7 @@ exports.Index = async (req, res) => {
         .json(`Desculpe, cliente com CPF ${cpf} não foi encontrado`);
     }
 
-    res.json(responseClient);
+    res.json({ client: responseClient });
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
