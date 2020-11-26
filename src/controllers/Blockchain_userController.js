@@ -15,7 +15,7 @@ exports.Search = async (req, res) => {
   const cpf = req.body.cpf;
   try {
     const user = await Blockchain_User.findOne({ where: { cpf: cpf } });
-    res.json({ client: user });
+    res.json(user);
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
