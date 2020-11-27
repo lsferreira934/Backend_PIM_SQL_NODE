@@ -10,7 +10,6 @@ const Capmoney_Employee = require('../controllers/Capmoney_employeeController');
 const Capmoney_ClientBlocked = require('../controllers/Capmoney_clientBlockedController');
 const Capmoney_client = require('../models/Capmoney_client');
 
-
 // routes about Blockchain
 router.get('/allusers', Blockchain_User.Show);
 router.post('/clientsearch', Blockchain_User.Search);
@@ -27,7 +26,7 @@ router.post('/verifyclient', Capmoney_Client.Verication);
 router.get('/clients', Capmoney_Client.Show);
 router.post('/searchclient', Capmoney_Client.Index);
 router.post('/authenticate', Capmoney_Client.Login);
-router.put('/editclient', Capmoney_Client.Edit);
+router.post('/editclient', Capmoney_Client.Edit);
 router.post('/delete', Capmoney_Client.Destroy);
 // for tests
 router.post('/newClient', Capmoney_Client.Insert);
