@@ -105,3 +105,21 @@ exports.Edit = async (req, res) => {
     res.status(400).json({ error: error.message });
   }
 };
+
+
+exports.Destroy = async (req, res) => {
+  try {
+    const client = await Capmoney_Client.findOne({ where: { cpf: req.body.cpf } });
+
+    if (client === null) {
+      return res.json({
+        error: `Cliente não cadastrado! `,
+      });
+    }
+
+    await client.destroy(req.body.cpf);
+    res.json(`Cliente ${client.name} excluído com sucesso`);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
