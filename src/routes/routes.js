@@ -36,6 +36,7 @@ router.post('/newClient', Capmoney_Client.Insert);
 router.post('/newemployee', Capmoney_Employee.Insert);
 router.get('/allemployees', Capmoney_Employee.Show);
 router.post('/authenticateemployee', Capmoney_Employee.Login);
+router.put('/updateemployee', Capmoney_Employee.Update);
 
 // Routes abour Capmoney Clients Blokeds
 router.get('/allblockeds', Capmoney_ClientBlocked.Show);

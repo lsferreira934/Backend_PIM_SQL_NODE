@@ -87,20 +87,17 @@ exports.Login = async (req, res) => {
 
 exports.Edit = async (req, res) => {
   try {
-    const { name, cpf, bornAt, email, phone, address, password } = req.body;
+    const client = await Capmoney_Client.findOne({ where: { cpf: req.body.cpf } });
 
-    const responseClient = await Capmoney_Client.findOne({
-      where: { cpf: cpf },
-    });
-
-    if (!responseClient) {
-      res
-        .status(400)
-        .json(`Desculpe, cliente com CPF ${cpf} não foi encontrado`);
+    if (client === null) {
+      return res.json({
+        error: `Cliente não cadastrado! `,
+      });
     }
 
-    await responseClient.update(req.body);
-    res.json({ client: responseClient });
+
+    await client.update(req.body);
+    res.json(client);
   } catch (error) {
     res.status(400).json({ error: error.message });
   }

@@ -44,3 +44,22 @@ exports.Login = async (req, res) => {
     res.status(400).json({ error: error.message });
   }
 };
+
+// Update
+exports.Update = async (req, res) => {
+  try {
+    const client = await Capmoney_employee.findOne({ where: { cpf: req.body.cpf } });
+
+    if (client === null) {
+      return res.json({
+        error: `Cliente não cadastrado! `,
+      });
+    }
+
+
+    await client.update(req.body);
+    res.json(client);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
