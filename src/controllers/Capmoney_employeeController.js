@@ -37,8 +37,6 @@ exports.Login = async (req, res) => {
       res.status(401).json({ error: 'Invalid password' });
     }
 
-    employee.password = undefined;
-
     res.json({ employee });
   } catch (error) {
     res.status(400).json({ error: error.message });
@@ -48,14 +46,15 @@ exports.Login = async (req, res) => {
 // Update
 exports.Update = async (req, res) => {
   try {
-    const client = await Capmoney_employee.findOne({ where: { cpf: req.body.cpf } });
+    const client = await Capmoney_employee.findOne({
+      where: { cpf: req.body.cpf },
+    });
 
     if (client === null) {
       return res.json({
         error: `Cliente não cadastrado! `,
       });
     }
-
 
     await client.update(req.body);
     res.json(client);
